@@ -134,13 +134,49 @@
             color: var(--green);
         }
         
-        /* Date Tabs */
+        /* Date Tabs Container */
+        .date-section {
+            margin-bottom: 20px;
+        }
+        
+        .date-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding: 0 4px;
+        }
+        
+        .date-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .date-nav-hint {
+            font-size: 11px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        /* Date Tabs Card */
+        .date-tabs-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        
         .date-tabs {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
             overflow-x: auto;
-            padding: 8px 4px;
+            padding: 4px;
             scrollbar-width: thin;
             scrollbar-color: var(--border) transparent;
         }
@@ -160,65 +196,87 @@
         
         .date-tab {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 6px;
-            padding: 10px 16px;
+            gap: 4px;
+            padding: 12px 14px;
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 14px;
             background: var(--bg);
             color: var(--muted);
             cursor: pointer;
             font-size: 13px;
             font-weight: 600;
             white-space: nowrap;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
             flex-shrink: 0;
+            position: relative;
+            min-width: 70px;
+        }
+        
+        .date-tab-weekday {
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
         }
         
         .date-tab .cal-icon {
-            font-size: 14px;
-            transition: transform 0.25s;
+            font-size: 16px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .date-tab:hover {
             border-color: var(--key-blue);
             color: var(--key-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(8, 106, 218, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(8, 106, 218, 0.15);
         }
         
         .date-tab:hover .cal-icon {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(-5deg);
+        }
+        
+        .date-tab:hover .date-tab-weekday {
+            opacity: 1;
         }
         
         .date-tab.active {
-            background: linear-gradient(135deg, var(--key-blue) 0%, #0ea5e9 100%);
+            background: linear-gradient(145deg, var(--key-blue) 0%, #0ea5e9 50%, #06b6d4 100%);
             color: white;
             border-color: transparent;
-            box-shadow: 0 4px 16px rgba(8, 106, 218, 0.35);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(8, 106, 218, 0.35), 0 2px 8px rgba(8, 106, 218, 0.2);
+            transform: translateY(-3px) scale(1.02);
         }
         
         .date-tab.active .cal-icon {
-            transform: scale(1.15);
+            transform: scale(1.2);
         }
         
-        .date-tab.today {
-            position: relative;
+        .date-tab.active .date-tab-weekday {
+            opacity: 0.9;
+            color: rgba(255,255,255,0.9);
         }
         
-        .date-tab.today::after {
+        .date-tab.today::before {
             content: '';
             position: absolute;
-            bottom: -2px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
+            top: -4px;
+            right: -4px;
+            width: 10px;
+            height: 10px;
             background: var(--orange);
             border-radius: 50%;
+            border: 2px solid var(--bg);
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.4);
+        }
+        
+        .date-tab.today.active::before {
+            background: white;
+            border-color: var(--key-blue);
         }
         
         /* Screen Container */
@@ -362,6 +420,24 @@
         
         .term-prompt { color: var(--green); }
         
+        /* Placeholder hint */
+        .placeholder-hint {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--muted);
+        }
+        
+        .placeholder-hint h2 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--fg);
+        }
+        
+        .placeholder-hint p {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        
         /* Long content */
         .long-text {
             font-size: 13px; font-weight: 600;
@@ -420,16 +496,60 @@
         </div>
         
         <!-- Date Tabs -->
-        <div class="date-tabs">
-            <button class="date-tab" onclick="showDate('2026-03-27')">📅 2026-03-27</button>
-            <button class="date-tab" onclick="showDate('2026-03-26')">📅 2026-03-26</button>
-            <button class="date-tab" onclick="showDate('2026-03-25')">📅 2026-03-25</button>
-            <button class="date-tab" onclick="showDate('2026-03-24')">📅 2026-03-24</button>
-            <button class="date-tab" onclick="showDate('2026-03-23')">📅 2026-03-23</button>
-            <button class="date-tab" onclick="showDate('2026-03-22')">📅 2026-03-22</button>
-            <button class="date-tab" onclick="showDate('2026-03-21')">📅 2026-03-21</button>
-            <button class="date-tab" onclick="showDate('2026-03-20')">📅 2026-03-20</button>
-            <button class="date-tab" onclick="showDate('2026-03-19')">📅 2026-03-19</button>
+        <div class="date-section">
+            <div class="date-section-header">
+                <span class="date-section-title">📅 选择日期</span>
+                <span class="date-nav-hint">← 左右滑动 →</span>
+            </div>
+            <div class="date-tabs-card">
+                <div class="date-tabs">
+                    <button class="date-tab" onclick="showDate('2026-03-27')">
+                        <span class="date-tab-weekday">周五</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-27</span>
+                    </button>
+                    <button class="date-tab" onclick="showDate('2026-03-26')">
+                        <span class="date-tab-weekday">周四</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-26</span>
+                    </button>
+                    <button class="date-tab" onclick="showDate('2026-03-25')">
+                        <span class="date-tab-weekday">周三</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-25</span>
+                    </button>
+                    <button class="date-tab" onclick="showDate('2026-03-24')">
+                        <span class="date-tab-weekday">周二</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-24</span>
+                    </button>
+                    <button class="date-tab" onclick="showDate('2026-03-23')">
+                        <span class="date-tab-weekday">周一</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-23</span>
+                    </button>
+                    <button class="date-tab" onclick="showDate('2026-03-22')">
+                        <span class="date-tab-weekday">周日</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-22</span>
+                    </button>
+                    <button class="date-tab" onclick="showDate('2026-03-21')">
+                        <span class="date-tab-weekday">周六</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-21</span>
+                    </button>
+                    <button class="date-tab" onclick="showDate('2026-03-20')">
+                        <span class="date-tab-weekday">周五</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-20</span>
+                    </button>
+                    <button class="date-tab" onclick="showDate('2026-03-19')">
+                        <span class="date-tab-weekday">周四</span>
+                        <span class="cal-icon">📅</span>
+                        <span>03-19</span>
+                    </button>
+                </div>
+            </div>
         </div>
         
         <!-- Screen Container -->
