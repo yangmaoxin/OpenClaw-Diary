@@ -1,0 +1,110 @@
+{
+  "registry_version": "1.0",
+  "created_at": "2026-04-07T18:45:00+08:00",
+  "description": "虾里虾气 Skills 中央注册表 - 参照 Claw-Code 工具系统设计",
+  "skills": [
+    {
+      "name": "feishu-doc",
+      "path": "/usr/lib/node_modules/openclaw/dist/extensions/feishu/skills/feishu-doc/SKILL.md",
+      "description": "飞书文档读写操作",
+      "category": "productivity",
+      "permission_level": "external",
+      "status": "ready",
+      "capabilities": ["read", "write", "append", "create_table"]
+    },
+    {
+      "name": "feishu-drive",
+      "path": "/usr/lib/node_modules/openclaw/dist/extensions/feishu/skills/feishu-drive/SKILL.md",
+      "description": "飞书云存储文件管理",
+      "category": "productivity",
+      "permission_level": "external",
+      "status": "ready"
+    },
+    {
+      "name": "feishu-wiki",
+      "path": "/usr/lib/node_modules/openclaw/dist/extensions/feishu/skills/feishu-wiki/SKILL.md",
+      "description": "飞书知识库导航",
+      "category": "productivity",
+      "permission_level": "external",
+      "status": "ready"
+    },
+    {
+      "name": "weibo-hot-search",
+      "path": "~/.openclaw/extensions/weibo-openclaw-plugin/skills/weibo-hot-search/SKILL.md",
+      "description": "微博热搜榜工具",
+      "category": "social",
+      "permission_level": "read_only",
+      "status": "ready"
+    },
+    {
+      "name": "weibo-search",
+      "path": "~/.openclaw/extensions/weibo-openclaw-plugin/skills/weibo-search/SKILL.md",
+      "description": "微博内容搜索",
+      "category": "social",
+      "permission_level": "read_only",
+      "status": "ready"
+    },
+    {
+      "name": "weibo-status",
+      "path": "~/.openclaw/extensions/weibo-openclaw-plugin/skills/weibo-status/SKILL.md",
+      "description": "微博状态管理",
+      "category": "social",
+      "permission_level": "external",
+      "status": "ready"
+    },
+    {
+      "name": "weather",
+      "path": "/usr/lib/node_modules/openclaw/skills/weather/SKILL.md",
+      "description": "天气预报查询",
+      "category": "utility",
+      "permission_level": "read_only",
+      "status": "ready"
+    },
+    {
+      "name": "healthcheck",
+      "path": "/usr/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+      "description": "主机安全审计",
+      "category": "security",
+      "permission_level": "workspace_write",
+      "status": "ready"
+    },
+    {
+      "name": "agent-reach",
+      "path": "~/.openclaw/skills/agent-reach/SKILL.md",
+      "description": "全网搜索工具（16平台）",
+      "category": "search",
+      "permission_level": "read_only",
+      "status": "ready"
+    },
+    {
+      "name": "fat-loss-coach",
+      "path": "~/.openclaw/workspace/.agents/skills/SKILL.md",
+      "description": "减脂教练技能",
+      "category": "health",
+      "permission_level": "workspace_write",
+      "status": "ready"
+    },
+    {
+      "name": "Get笔记",
+      "path": "~/.openclaw/workspace/skills/getnote/SKILL.md",
+      "description": "笔记保存与管理",
+      "category": "productivity",
+      "permission_level": "workspace_write",
+      "status": "ready"
+    }
+  ],
+  "failure_classes": [
+    {"name": "NETWORK_TIMEOUT", "recoverable": true, "description": "网络请求超时"},
+    {"name": "PERMISSION_DENIED", "recoverable": false, "description": "权限被拒绝"},
+    {"name": "TOOL_NOT_FOUND", "recoverable": false, "description": "工具不存在"},
+    {"name": "API_RATE_LIMIT", "recoverable": true, "description": "API限流"},
+    {"name": "AUTH_EXPIRED", "recoverable": true, "description": "认证过期"},
+    {"name": "CONFIG_INVALID", "recoverable": false, "description": "配置无效"},
+    {"name": "UNKNOWN", "recoverable": false, "description": "未知错误"}
+  ],
+  "permission_levels": [
+    {"level": "read_only", "description": "只读操作，如查询、搜索"},
+    {"level": "workspace_write", "description": "写入工作区文件"},
+    {"level": "external", "description": "外部操作，如发消息、发微博"}
+  ]
+}
